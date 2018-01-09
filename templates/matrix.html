@@ -1,0 +1,35 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            {% for c in s2 %}
+                <th scope="col">{{ c }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            {% for i in range(s2 | length + 1) %}
+                <th scope="col">{{ i }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(matrix | length) %}
+            <tr>
+                {% if i > 0 %} <!-- write the first column containing s1 -->
+                    <th scope= "row" style="text-align: center">{{ s1[i - 1] }}</th>
+                {% else %}
+                    <td></td>
+                {% endif %}
+                <th scope="row">{{ i }}</th>
+                <!-- create data cells for the matrix -->
+                {% for j in range(matrix[i] | length) %}
+                    <td>{{ matrix[i][j][0] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
